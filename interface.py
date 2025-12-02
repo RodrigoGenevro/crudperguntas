@@ -14,7 +14,7 @@ def adicionar_pergunta():
             "opcao1": opcao1.get(),
             "opcao2": opcao2.get(),
             "opcao3": opcao3.get(),
-            "correta": int(correta.get())
+            "correta": correta.get()
         }
         logica.adicionar(perguntas, nova_pergunta)
         atualizar_treeview()
@@ -62,6 +62,13 @@ def remover_pergunta():
     except Exception as e:
         messagebox.showerror("Erro", str(e))
 
+def limpar_campos():
+        pergunta.set("")
+        opcao1.set("")
+        opcao2.set("")
+        opcao3.set("")
+        correta.set("")
+
 def atualizar_treeview():
     for item in treeview.get_children():
         treeview.delete(item)
@@ -96,6 +103,7 @@ def iniciar_interface():
     janela.title("CRUD de Perguntas")
     janela.geometry("1050x270")
     janela.configure(bg="#022a5c")
+    janela.resizable=(False,False)
 
     style = ttk.Style()
     style.theme_use("default")
@@ -132,6 +140,7 @@ def iniciar_interface():
     Button(frame_botoes, text="Adicionar Pergunta", command= adicionar_pergunta, bg="#29A50A", fg="white").grid(row=0,column=0, padx=15)
     Button(frame_botoes, text="Atualizar Pergunta", command= atualizar_pergunta, bg="#adad28", fg="white").grid(row=0,column=1)
     Button(frame_botoes, text="Remover Pergunta", command= remover_pergunta, bg="#b02121", fg="white").grid(row=0,column=2, padx=15)
+    Button(frame_botoes, text="Limpar", command=limpar_campos,bg="#bf5804",fg="white").grid(row=0, column=3)
 
     treeview = ttk.Treeview(janela, columns=("pergunta", "opcao1", "opcao2", "opcao3", "correta"), show="headings", height=6)
     treeview.heading("pergunta",text="Pergunta")
