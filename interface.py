@@ -79,7 +79,8 @@ def iniciar_interface():
 
     janela = tk.Tk()
     janela.title("CRUD de Perguntas")
-    janela.geometry("850x500")
+    janela.geometry("1050x270")
+    janela.configure(bg="#022a5c")
 
     style = ttk.Style()
     style.theme_use("default")
@@ -90,28 +91,28 @@ def iniciar_interface():
     opcao3= StringVar()
     correta= IntVar()
     
-    frame = Frame(janela)
+    frame = Frame(janela,bg="#022a5c")
     frame.pack(fill="x", padx=10, pady=10)
 
-    frame_botoes = Frame(janela)
+    frame_botoes = Frame(janela,bg="#022a5c")
     frame_botoes.pack(fill="x")
 
-    Label(janela, text="Cadastro / Edição de perguntas").pack()
+    Label(janela, text="Cadastro / Edição de perguntas",bg="#022a5c",fg="white").pack()
 
-    Label(frame, text="Pergunta:").grid(row=0, column=0)
-    Entry(frame, textvariable=pergunta, width=30).grid(row=0, column=1, padx=10,)
+    Label(frame, text="Pergunta:",bg="#022a5c",fg="white").grid(row=0, column=0)
+    Entry(frame, textvariable=pergunta, width=50).grid(row=0, column=1, padx=10)
 
-    Label(frame, text="Opção 1: ").grid(row=1, column=0)
-    Entry(frame, textvariable=opcao1, width=30).grid(row=1,column=1, padx=10)
+    Label(frame, text="Opção 1: ",bg="#022a5c",fg="white").grid(row=1, column=0)
+    Entry(frame, textvariable=opcao1, width=50).grid(row=1,column=1, padx=10)
 
-    Label(frame, text="Opção 2: ").grid(row=1, column=2)
-    Entry(frame, textvariable=opcao2,width=30).grid(row=1, column=3, padx=10)
+    Label(frame, text="Opção 2: ",bg="#022a5c",fg="white").grid(row=1, column=2)
+    Entry(frame, textvariable=opcao2,width=50).grid(row=1, column=3, padx=10)
     
-    Label(frame, text="Opção 3: ").grid(row=2, column=0)
-    Entry(frame, textvariable=opcao3, width=30).grid(row=2,column=1, padx=10)
+    Label(frame, text="Opção 3: ",bg="#022a5c",fg="white").grid(row=2, column=0)
+    Entry(frame, textvariable=opcao3, width=50).grid(row=2,column=1, padx=10)
 
-    Label(frame, text="Alternativa Correta: ").grid(row=2, column=2)
-    Entry(frame, textvariable=correta,width=30).grid(row=2,column=3,padx=10)
+    Label(frame, text="Alternativa Correta: ",bg="#022a5c",fg="white").grid(row=2, column=2)
+    Entry(frame, textvariable=correta,width=50).grid(row=2,column=3,padx=10)
 
     Button(frame_botoes, text="Adicionar Pergunta", command= adicionar_pergunta, bg="#29A50A", fg="white").grid(row=0,column=0, padx=15)
     Button(frame_botoes, text="Atualizar Pergunta", command= atualizar_pergunta, bg="#adad28", fg="white").grid(row=0,column=1)
