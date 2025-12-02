@@ -17,6 +17,7 @@ def adicionar_pergunta():
             "correta": int(correta.get())
         }
         logica.adicionar(perguntas, nova_pergunta)
+        atualizar_treeview()
         messagebox.showinfo("Sucesso.","Pergunta adicionada com sucesso.")
     except ValueError as e:
         messagebox.showerror("Erro", f"Erro ao adicionar a pergunta {e}")
@@ -39,6 +40,7 @@ def atualizar_pergunta():
         }
 
         logica.atualizar(perguntas, indice, nova)
+        atualizar_treeview()
         messagebox.showinfo("Sucesso", "Pergunta atualizada.")
 
     except Exception as e:
@@ -54,11 +56,24 @@ def remover_pergunta():
         indice = treeview.index(item[0])
         logica.excluir(perguntas, indice)
         treeview.delete(item[0])
+        atualizar_treeview()
 
         messagebox.showinfo("Sucesso", "Pergunta removida.")
     except Exception as e:
         messagebox.showerror("Erro", str(e))
 
+def atualizar_treeview():
+    for item in treeview.get_children():
+        treeview.delete(item)
+
+    for p in perguntas:
+        treeview.insert("", "end", values=(
+            p["pergunta"],
+            p["opcao1"],
+            p["opcao2"],
+            p["opcao3"],
+            p["correta"]
+        ))
 
 def mostrar_dados(event=None):
     selecao = treeview.selection()
